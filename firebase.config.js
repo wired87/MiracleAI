@@ -5,19 +5,7 @@ import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAaQvHP9Syxu-ycHqXCdHcGtTGEK-vczjc",
-
-    authDomain: "thehub-66eb1.firebaseapp.com",
-
-    projectId: "thehub-66eb1",
-
-    storageBucket: "thehub-66eb1.appspot.com",
-
-    messagingSenderId: "395573890829",
-
-    appId: "1:395573890829:web:5fb7f187df79fdbbbdea44",
-
-    measurementId: "G-5X4QZ6QCEY"
+// get your own
 
 };
 
