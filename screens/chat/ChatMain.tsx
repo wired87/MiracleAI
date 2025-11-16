@@ -12,10 +12,11 @@ import {chatStyles, windowWidth} from "./chatStyles";
 import {SingleMessage} from "../../components/container/chat/SingleMessage";
 import {MessageInputContainer} from "../../components/container/MessageInputContainer";
 
-import {InputContext, ThemeContext} from "../Context";
+import {InputContext, ThemeContext, MediaContext} from "../Context";
 import SingleErrorMessage from "../../components/container/chat/SingleErrorMessage";
 import {StyleProps} from "react-native-reanimated";
 import {userMesssageObject} from "./ChatNavigator";
+import {CameraOverlay} from "../../components/camera/CameraOverlay";
 
 const SingleMessageMemo = memo(SingleMessage);
 
@@ -23,6 +24,7 @@ export const ChatMain = () => {
 
   const { messages, messagesLeft } = useContext(InputContext);
   const { customTheme } = useContext(ThemeContext);
+  const { cameraVisible, setCameraVisible } = useContext(MediaContext);
 
   const keyExtractor = (item: object, index: number) => String(index);
 
@@ -94,6 +96,11 @@ export const ChatMain = () => {
         </View>
 
       </KeyboardAvoidingView>
+      
+      <CameraOverlay
+        visible={cameraVisible}
+        onClose={() => setCameraVisible(false)}
+      />
     </SafeAreaView>
   );
 }

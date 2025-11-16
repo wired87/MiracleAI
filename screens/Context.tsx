@@ -74,6 +74,9 @@ export const MediaContext= createContext(
     doc: undefined as DocumentPickerResult | undefined,
     updateDoc: (doc:DocumentPickerResult | undefined):void => {},
 
+    cameraVisible: false,
+    setCameraVisible: (() => {}) as Dispatch<SetStateAction<boolean>>,
+
   }
 )
 

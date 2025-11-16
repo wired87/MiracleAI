@@ -34,6 +34,12 @@
           "microphonePermission": "Allow MOTHER to access your microphone."
         }
       ],
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Allow MIRACLE AI to access your Camera."
+        }
+      ],
       "expo-secure-store"
     ],
     "splash": {

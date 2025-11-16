@@ -30,7 +30,7 @@ const FloatingMediaButton:React.FC<FloatingButtonProps> = (
 
   const iconColor:string = customTheme.text
 
-  const { updateDoc, updatePickedImage, pickedImage, doc } = useContext(MediaContext);
+  const { updateDoc, updatePickedImage, pickedImage, doc, setCameraVisible } = useContext(MediaContext);
 
   const rotationAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -143,19 +143,19 @@ const FloatingMediaButton:React.FC<FloatingButtonProps> = (
   }
 
   const getImage = async (recordImage: boolean) => {
+    if (recordImage) {
+      // Open vision-camera overlay instead of expo-image-picker
+      setCameraVisible(true);
+      return;
+    }
+    
     const options: ImagePicker.ImagePickerOptions = {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     }
-    let result;
-    if (recordImage) {
-      await ImagePicker.requestCameraPermissionsAsync();
-      result = await ImagePicker.launchCameraAsync(options);
-    } else {
-      result = await ImagePicker.launchImageLibraryAsync(options);
-    }
+    const result = await ImagePicker.launchImageLibraryAsync(options);
     console.log(result);
 
     if (result && result.assets && !result.canceled) {
@@ -191,6 +191,18 @@ const FloatingMediaButton:React.FC<FloatingButtonProps> = (
             opacityAnimatedStyle,
           ]}>
           <Entypo name="image" size={24} color={iconColor} />
+        </Animated.View>
+      </Pressable>
+
+      <Pressable onPress={() => getImage(true)}>
+        <Animated.View
+          style={[
+            styles.button,
+            styles.secondary,
+            thumbAnimatedStyle,
+            opacityAnimatedStyle,
+          ]}>
+          <Entypo name="camera" size={24} color={iconColor} />
         </Animated.View>
       </Pressable>
 

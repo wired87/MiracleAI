@@ -76,3 +76,9 @@ export function useCurrentRecording() {
 
   return { currentRecording, setCurrentRecording };
 }
+
+export function useCameraVisible() {
+  const [cameraVisible, setCameraVisible] = useState(false);
+
+  return { cameraVisible, setCameraVisible };
+}

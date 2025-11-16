@@ -52,6 +52,7 @@
     "react-native-screens": "~3.29.0",
     "react-native-track-player": "^4.0.1",
     "react-native-vector-icons": "^10.0.1",
+    "react-native-vision-camera": "^4.7.3",
     "react-syntax-highlighter": "^15.5.0"
   },
   "resolutions": {
